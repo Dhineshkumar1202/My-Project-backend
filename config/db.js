@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 
 const connectDB = async () => {
   try {
-    await mongoose.connect('mongodb+srv://cpms1234:cpms1234@cpmscluster.qg5ve.mongodb.net/cpmscluster');
+    await mongoose.connect(process.env.MONGO_URI);
     console.log('MongoDB Connected');
   } catch (error) {
     console.error('MongoDB connection failed:', error.message);

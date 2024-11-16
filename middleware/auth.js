@@ -10,7 +10,10 @@ const auth = async (req, res, next) => {
 
     try {
         const decoded = jwt.verify(token, process.env.JWT_SECRET);
-        req.user = await User.findById(decoded.id).select('-password');
+        const user = await User.findById(decoded.id).select('-password');
+        
+        // Add role to the user object, so it's easy to check later
+        req.user = user;
         next();
     } catch (error) {
         console.error('Token verification failed:', error.message);

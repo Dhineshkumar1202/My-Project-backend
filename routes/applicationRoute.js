@@ -16,7 +16,7 @@ const handleSubmit = async (e) => {
   e.preventDefault();
   console.log('Submitting:', { studentId, companyName, jobTitle }); 
   try {
-    const response = await axios.post('http://localhost:5000/api/applications', { studentId, companyName, jobTitle });
+    const response = await axios.post('https://my-project-backend-ssaj.vercel.app/api/applications/', { studentId, companyName, jobTitle });
     if (response.status === 201) {
       alert('Application submitted successfully');
       setStudentId('');
